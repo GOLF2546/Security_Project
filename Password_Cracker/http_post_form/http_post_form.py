@@ -22,8 +22,9 @@ def main ():
     if args.username and args.password:
         login(args.username, args.password, args.target, args.fail)
     else:
-        usernames = [args.username] if args.username else open(args.username_list).read().splitlines()
-        passwords = [args.password] if args.password else open(args.passwords_list).read().splitlines()
+        usernames = [args.username] if args.username else open(args.username_list, encoding="latin-1").read().splitlines()
+        passwords = [args.password] if args.password else open(args.passwords_list, encoding="latin-1").read().splitlines()
+
         brute_force(usernames, passwords, args.target, args.fail)
         
 if __name__ == "__main__":
